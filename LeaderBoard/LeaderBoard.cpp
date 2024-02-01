@@ -3,7 +3,7 @@
 
 using namespace std;
 
-const int NUM_TEAMS = 12;
+const int NUM_TEAMS = 3;
 
 class Team
 {
@@ -19,56 +19,58 @@ public:
     int P;
 
     // Constructor to initialize member variables
-    Team() : MP(0), W(0), D(0), L(0), GF(0), GA(0), GD(0), P(0) {}
+    Team(string teamName, int MP , int W, int D, int L, int GF, int GA, int GD, int P)
+    {
+        this->teamName = teamName;
+        this->MP = MP;
+        this->W = W;
+        this->D = D;
+        this->L = L;
+        this->GF = GF;
+        this->GA = GA;
+        this->GD = GD;
+        this->P = P;
+    }
 };
 
 int main()
 {
-    Team Teams[NUM_TEAMS];
 
     // Initialize teams with default values
-    for (int i = 0; i < NUM_TEAMS; ++i)
-    {
-        Teams[i].teamName = "Team" + to_string(i + 1);
-        Teams[i].MP = Teams[i].W = Teams[i].D = Teams[i].L = 0;
-        Teams[i].GF = Teams[i].GA = Teams[i].GD = Teams[i].P = 0;
-    }
+   
 
     string nameofteam;
     bool end = false;
 
+    Team team1 = { "", 0, 0, 0, 0, 0, 0, 0, 0 };
+    Team team2 = { "", 0, 0, 0, 0, 0, 0, 0, 0 };
+    Team team3 = { "", 0, 0, 0, 0, 0, 0, 0, 0 };
+    Team team4 = { "", 0, 0, 0, 0, 0, 0, 0, 0 };
+    Team team5 = { "", 0, 0, 0, 0, 0, 0, 0, 0 };
+    Team teams[5] = {team1, team2, team3, team4, team5};
+
     while (!end)
     {
-        cout << "Enter your Team (or type 'end' to finish): ";
-        cin >> nameofteam;
+        for (int i = 0; i < NUM_TEAMS; i++) 
+        {
 
-        if (nameofteam == "end")
-        {
-            end = true;
+            cout << "Enter your team name: ";
+            cin >> nameofteam;
+            teams[i].teamName = nameofteam;
         }
-        else
-        {
+        cout << team1.teamName;
+
             // Find the team with the entered name and update its statistics
-            for (int i = 0; i < NUM_TEAMS; ++i)
+            for (int j = 0; j < NUM_TEAMS; ++j)
             {
-                if (Teams[i].teamName == nameofteam)
-                {
-                    // Add logic to update other statistics as needed
-                    // ...
 
-                    // Output the updated leaderboard
-                    cout << "Leaderboard:\n";
-                    for (int j = 0; j < NUM_TEAMS; ++j)
-                    {
-                        cout << Teams[j].teamName << "\tMP: " << Teams[j].MP << "\tW: " << Teams[j].W
-                            << "\tD: " << Teams[j].D << "\tL: " << Teams[j].L << "\tGF: " << Teams[j].GF
-                            << "\tGA: " << Teams[j].GA << "\tGD: " << Teams[j].GD << "\tP: " << Teams[j].P << endl;
-                    }
 
-                    break;  // Exit the loop once the team is found and updated
-                }
+
+        cout << teams[j].teamName << "\tMP: " << teams[j].MP << "\tW: " << teams[j].W
+                            << "\tD: " << teams[j].D << "\tL: " << teams[j].L << "\tGF: " << teams[j].GF
+                            << "\tGA: " << teams[j].GA << "\tGD: " << teams[j].GD << "\tP: " << teams[j].P << endl;
             }
-        }
+        
     }
 
     return 0;
