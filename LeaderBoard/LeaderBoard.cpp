@@ -1,13 +1,13 @@
 #include <iostream>
 #include <string>
+#include <list>
 
 using namespace std;
-
 const int NUM_TEAMS = 3;
 
 class Team
 {
-public:
+   public:
     string teamName;
     int MP;
     int W;
@@ -37,21 +37,61 @@ int main()
 {
 
     // Initialize teams with default values
-   
+
 
     string nameofteam;
     bool end = false;
 
-    Team team1 = { "", 0, 0, 0, 0, 0, 0, 0, 0 };
-    Team team2 = { "", 0, 0, 0, 0, 0, 0, 0, 0 };
-    Team team3 = { "", 0, 0, 0, 0, 0, 0, 0, 0 };
-    Team team4 = { "", 0, 0, 0, 0, 0, 0, 0, 0 };
-    Team team5 = { "", 0, 0, 0, 0, 0, 0, 0, 0 };
-    Team teams[5] = {team1, team2, team3, team4, team5};
+    Team team1 = { "a", 0, 0, 0, 0, 0, 0, 0, 0 };
+    Team team2 = { "b", 0, 0, 0, 0, 0, 0, 0, 0 };
+    Team team3 = { "c", 0, 0, 0, 0, 0, 0, 0, 0 };
+    Team team4 = { "d", 0, 0, 0, 0, 0, 0, 0, 0 };
+    Team team5 = { "e", 0, 0, 0, 0, 0, 0, 0, 0 };
+    list  <Team> teams = { team1, team2, team3, team4, team5 };
+    for (Team& x : teams)
+    {
+        string nameofteam;
+        cout << "Enter team name: ";
+        cin >> nameofteam;
 
+        Team team(nameofteam, 0, 0, 0, 0, 0, 0, 0, 0);
+        teams.push_back(team);
+
+        cout << "Enter wins for team " << team.teamName << ": ";
+        cin >> team.W;
+
+        cout << "Enter draws for team " << team.teamName << ": ";
+        cin >> team.D;
+
+        cout << "Enter losses for team " << team.teamName << ": ";
+        cin >> team.L;
+
+        team.MP = team.W + team.D + team.L;
+        team.GF = 0;  // You can input actual values or calculate based on your requirements
+        team.GA = 0;
+    }
+
+    // Find the team with the entered name and update its statistics
+    for (Team x : teams)
+    {
+
+
+
+        cout << x.teamName << "\tMP: " << x.teamName << "\tW: " << x.teamName
+            << "\tD: " << x.teamName << "\tL: " << x.teamName << "\tGF: " << x.teamName
+            << "\tGA: " << x.teamName << "\tGD: " << x.teamName << "\tP: " << x.teamName << endl;
+    }
+
+
+
+
+
+    
+}
+/*
     while (!end)
     {
-        for (int i = 0; i < NUM_TEAMS; i++) 
+        for (int i = 0; i < NUM_TEAMS; i++)
         {
 
             cout << "Enter your team name: ";
@@ -59,19 +99,6 @@ int main()
             teams[i].teamName = nameofteam;
         }
         cout << team1.teamName;
+   }     */
 
-            // Find the team with the entered name and update its statistics
-            for (int j = 0; j < NUM_TEAMS; ++j)
-            {
-
-
-
-        cout << teams[j].teamName << "\tMP: " << teams[j].MP << "\tW: " << teams[j].W
-                            << "\tD: " << teams[j].D << "\tL: " << teams[j].L << "\tGF: " << teams[j].GF
-                            << "\tGA: " << teams[j].GA << "\tGD: " << teams[j].GD << "\tP: " << teams[j].P << endl;
-            }
-        
-    }
-
-    return 0;
-}
+ 
