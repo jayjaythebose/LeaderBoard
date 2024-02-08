@@ -52,25 +52,24 @@ int main()
     {
         string nameofteam;
         cout << "Enter team name: ";
-        cin >> nameofteam;
+        cin >> x.teamName;
 
-        Team team(nameofteam, 0, 0, 0, 0, 0, 0, 0, 0);
-        teams.push_back(team);
+        
 
-        cout << "Enter wins for team " << team.teamName << ": ";
-        cin >> team.W;
+        cout << "Enter wins for team " << x.teamName << ": ";
+        cin >> x.W;
 
-        cout << "Enter draws for team " << team.teamName << ": ";
-        cin >> team.D;
+        cout << "Enter draws for team " << x.teamName << ": ";
+        cin >> x.D;
 
-        cout << "Enter losses for team " << team.teamName << ": ";
-        cin >> team.L;
+        cout << "Enter losses for team " << x.teamName << ": ";
+        cin >> x.L;
 
-        team.MP = team.W + team.D + team.L;
-        team.GF = 0;  // You can input actual values or calculate based on your requirements
-        team.GA = 0;
+        x.MP = x.W + x.D + x.L;
+        x.GF = 0;  // You can input actual values or calculate based on your requirements
+        x.GA = 0;
     }
-
+   
     // Find the team with the entered name and update its statistics
     for (Team x : teams)
     {
